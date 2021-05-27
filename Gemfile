@@ -10,6 +10,7 @@ gem 'rubocop', '~> 1.15'
 gem 'reek', '~> 6.0', '>= 6.0.4'
 gem 'rails_best_practices', '~> 1.20', '>= 1.20.1'
 gem 'brakeman', '~> 5.0', '>= 5.0.1'
+gem 'nokogiri', '~> 1.11', '>= 1.11.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 # Use postgresql as the database for Active Record

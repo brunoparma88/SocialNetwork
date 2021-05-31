@@ -2,10 +2,13 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
-
+gem 'jquery-rails'
+gem 'bootstrap'
 gem 'rspec', '~> 3.10'
-gem 'annotate', '~> 3.1', '>= 3.1.1'
-
+gem 'annotate'
+#group :development do
+#  gem 'annotate'
+#end
 gem 'rubocop', '~> 1.15'
 gem 'reek', '~> 6.0', '>= 6.0.4'
 gem 'rails_best_practices', '~> 1.20', '>= 1.20.1'

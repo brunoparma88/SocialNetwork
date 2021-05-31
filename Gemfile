@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 gem 'jquery-rails'
-gem 'bootstrap'
+#gem 'bootstrap'
+#gem 'devise_token_auth'
 gem 'rspec', '~> 3.10'
 gem 'annotate'
 #group :development do

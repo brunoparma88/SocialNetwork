@@ -66,15 +66,9 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
-    autoprefixer-rails (10.2.5.1)
-      execjs (> 0)
     bindex (0.8.1)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
-    bootstrap (5.0.1)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.9.2, < 3)
-      sassc-rails (>= 2.0.0)
     brakeman (5.0.1)
     builder (3.2.4)
     byebug (11.1.3)
@@ -94,7 +88,6 @@ GEM
     diff-lcs (1.4.4)
     erubi (1.10.0)
     erubis (2.7.0)
-    execjs (2.8.1)
     ffi (1.15.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -130,7 +123,6 @@ GEM
     parser (3.0.1.1)
       ast (~> 2.4.1)
     pg (1.2.3)
-    popper_js (2.9.2)
     psych (3.3.2)
     public_suffix (4.0.6)
     puma (5.3.2)
@@ -275,7 +267,6 @@ PLATFORMS
 DEPENDENCIES
   annotate
   bootsnap (>= 1.4.4)
-  bootstrap
   brakeman (~> 5.0, >= 5.0.1)
   byebug
   capybara (>= 3.26)

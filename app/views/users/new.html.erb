@@ -1,0 +1,36 @@
+<h1>Sign Up</h1>
+<%= form_for @user do |f|%>
+
+
+	<%= f.label :email, :class => "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+	<%= f.text_field :email, autofocus: true, :class => "form-control", :placeholder => "Enter email"%>
+	<span class="help-block" style="color:red"><%= f.object.errors[:email].join(", ") %></span>
+  </div>
+
+
+  <%= f.label :gender, :class => "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+	<%= f.text_field :gender, autofocus: true, :class => "form-control", :placeholder => "Enter gender (F o M)"%>
+  	<span class="help-block" style="color:red"><%= f.object.errors[:gender].join(", ") %></span>
+	</div>
+
+
+  <%= f.label :password, :class => "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+	<%= f.password_field :password, autofocus: true, :class => "form-control", :placeholder => "Password"%>
+  <span class="help-block" style="color:red"><%= f.object.errors[:password].join(", ") %></span>
+  </div>
+
+
+  <%= f.label :confirm_password, :class => "col-sm-2 control-label" %>
+	<div class="col-sm-4">
+	<%= f.password_field :confirm_password, autofocus: true, :class => "form-control", :placeholder => "Confirm password"%>
+  <span class="help-block" style="color:red"><%= f.object.errors[:confirm_password].join(", ") %></span>
+  </div>
+
+  <div class="col-sm-4">
+  <%= f.submit%>
+	</div>
+
+<%end%>

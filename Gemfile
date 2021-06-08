@@ -1,42 +1,38 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
-gem 'jquery-rails'
-gem 'rspec-rails'
-gem 'rspec-support'
-gem 'devise_token_auth'
-gem 'shoulda'
+
 
 group :test do
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
+  gem 'shoulda', '~> 4.0'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'rspec-support', '~> 3.10', '>= 3.10.2'
+  gem 'capybara', '>= 3.26'
+  gem 'faker', '~> 2.17'
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'webmock', '~> 3.7', '>= 3.7.6'
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
-
 end
 
 group :development, :test do
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'database_cleaner'
 end
 
 group :development do
-  gem 'annotate'
-  gem 'rails_best_practices', '~> 1.20', '>= 1.20.1'
-  gem 'reek', '~> 6.0', '>= 6.0.4'
+  gem 'annotate', '~> 3.1', '>= 3.1.1'
+  gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
   gem 'rubocop-rails'
   gem 'rubocop-rootstrap', '~> 1.2'
+  gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
-  gem 'rack-mini-profiler', '~> 2.0'
-  gem 'listen', '~> 3.3'
-  gem 'spring'
 end
-
 
 gem 'brakeman', '~> 5.0', '>= 5.0.1'
 gem 'nokogiri', '~> 1.11', '>= 1.11.6'
@@ -64,6 +60,5 @@ gem 'jbuilder', '~> 2.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

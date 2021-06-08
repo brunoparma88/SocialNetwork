@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -9,7 +11,7 @@
 #  confirmed_at           :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
-#  gender                 :string
+#  gender                 :integer
 #  image                  :string
 #  name                   :string
 #  nickname               :string
@@ -34,7 +36,14 @@ FactoryBot.define do
   factory :user do
     email    { Faker::Internet.unique.email }
     password { Faker::Internet.password(min_length: 8) }
-    gender   { Faker::Gender.short_binary_type }
     uid      { Faker::Internet.uuid }
+
+    trait :female do
+      gender { :female }
+    end
+
+    trait :male do
+      gender { :male }
+    end
   end
 end

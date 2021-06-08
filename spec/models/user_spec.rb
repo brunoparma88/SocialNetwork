@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -9,7 +11,7 @@
 #  confirmed_at           :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
-#  gender                 :string
+#  gender                 :integer
 #  image                  :string
 #  name                   :string
 #  nickname               :string
@@ -34,20 +36,22 @@
 require 'rails_helper'
 
 describe User do
-
   describe 'gender' do
     subject { build :user }
-    let(:user) { create(:user) }
-     it 'returns the correct name' do
-       expect(user.gender).to include('f').or include('m')
-     end
-   end
 
-   describe 'validations' do
-     context 'when was created with regular login' do
-       subject { build :user }
-       it { is_expected.to validate_presence_of(:email) }
-     end
-   end
+    let(:user) { create(:user, :male) }
 
+    it 'returns the correct gender' do
+      expect(user.gender).to eq('female').or eq('male')
+      # expect(user :gender).to equal(0).or equal(1)
+      # expect(invoice with category fee).to be_valid
+    end
+  end
+
+  describe 'validations' do
+    context 'when was created with regular login' do
+      subject { build :user }
+      it { is_expected.to validate_presence_of(:email) }
+    end
+  end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Helpers
   # Helper method to parse a response
   #
@@ -9,6 +11,4 @@ module Helpers
   def auth_headers
     @auth_headers ||= user.create_new_auth_token
   end
-
-
 end

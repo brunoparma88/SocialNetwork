@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'POST api/v1/users/', type: :request do
@@ -8,8 +10,7 @@ describe 'POST api/v1/users/', type: :request do
     let(:email)                 { 'test1@test.com' }
     let(:password)              { '12345678' }
     let(:password_confirmation) { '12345678' }
-    let(:gender)                { 'f' }
-
+    let(:gender)                { 'female' }
 
     let(:params) do
       {
@@ -29,28 +30,26 @@ describe 'POST api/v1/users/', type: :request do
     end
 
     it 'creates the user' do
-      expect {
+      expect do
         post user_registration_path, params: params, as: :json
-      }.to change(User, :count).by(1)
+      end.to change(User, :count).by(1)
     end
 
     it 'returns the user' do
       post user_registration_path, params: params, as: :json
 
-
       expect(json[:user][:email]).to eq(user.email)
       expect(json[:user][:uid]).to eq(user.uid)
       expect(json[:user][:provider]).to eq('email')
-
     end
 
     context 'when the email is not correct' do
       let(:email) { 'invalid_email' }
 
       it 'does not create a user' do
-        expect {
+        expect do
           post user_registration_path, params: params, as: :json
-        }.not_to change { User.count }
+        end.not_to change { User.count }
       end
 
       it 'does not return a successful response' do

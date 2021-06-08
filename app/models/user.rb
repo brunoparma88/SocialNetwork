@@ -11,7 +11,7 @@
 #  confirmed_at           :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
-#  gender                 :string
+#  gender                 :integer
 #  image                  :string
 #  name                   :string
 #  nickname               :string
@@ -40,15 +40,9 @@ class User < ActiveRecord::Base
          :recoverable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  #validates_presence_of :email
-  #validates_uniqueness_of :email
-  #validates :email, presence: true
-
-  validates :gender,  :acceptance =>  { accept:['m', 'f']},
-                      :presence => true
-
+  enum gender: %i[male female]
   validates :uid, uniqueness: { scope: :provider }
-
+  validates :email, uniqueness: true, presence: true
   before_validation :init_uid
 
   private

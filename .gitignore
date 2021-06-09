@@ -13,7 +13,7 @@ capybara-*.html
 /tmp
 /db/*.sqlite3
 /public/system
-/coverage/
+/coverage/*
 /spec/tmp
 .idea/
 .DS_Store

@@ -36,15 +36,14 @@
 require 'rails_helper'
 
 describe User do
-  describe 'gender' do
-    subject { build :user }
 
-    let(:user) { create(:user, :male) }
+  describe 'gender' do
+    let(:male_user) { create(:user, :male) }
+    let(:female_user) { create(:user, :female) }
 
     it 'returns the correct gender' do
-      expect(user.gender).to eq('female').or eq('male')
-      # expect(user :gender).to equal(0).or equal(1)
-      # expect(invoice with category fee).to be_valid
+      expect(male_user.gender).to eq('male')
+      expect(female_user.gender).to eq('female')
     end
   end
 

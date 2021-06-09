@@ -41,6 +41,7 @@ describe 'POST api/v1/users/', type: :request do
       expect(json[:user][:email]).to eq(user.email)
       expect(json[:user][:uid]).to eq(user.uid)
       expect(json[:user][:provider]).to eq('email')
+      expect(json[:user][:gender]).to eq(user.gender)
     end
 
     context 'when the email is not correct' do

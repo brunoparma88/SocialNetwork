@@ -5,9 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-
 group :test do
-  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'shoulda', '~> 4.0'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
   gem 'rspec-support', '~> 3.10', '>= 3.10.2'
@@ -19,6 +17,8 @@ group :test do
 end
 
 group :development, :test do
+  gem 'devise', '~> 4.8'
+  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'

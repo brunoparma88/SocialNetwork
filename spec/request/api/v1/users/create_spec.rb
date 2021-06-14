@@ -3,11 +3,17 @@
 require 'rails_helper'
 
 describe 'POST api/v1/users/', type: :request do
+
+  subject do
+    post user_registration_path, params: params, as: :json
+    response
+  end
+
   let(:user)            { User.last }
   let(:failed_response) { 422 }
 
-  describe 'POST create' do
-    let(:email)                 { 'test1@test.com' }
+  context 'POST create' do
+    let(:email)                 { 'test2@test.com' }
     let(:password)              { '12345678' }
     let(:password_confirmation) { '12345678' }
     let(:gender)                { 'female' }
@@ -24,20 +30,16 @@ describe 'POST api/v1/users/', type: :request do
     end
 
     it 'returns a successful response' do
-      post user_registration_path, params: params, as: :json
-
-      expect(response).to have_http_status(:success)
+      expect(subject).to have_http_status(:success)
     end
 
     it 'creates the user' do
       expect do
-        post user_registration_path, params: params, as: :json
+        subject
       end.to change(User, :count).by(1)
     end
 
     it 'returns the user' do
-      post user_registration_path, params: params, as: :json
-
       expect(json[:user][:email]).to eq(user.email)
       expect(json[:user][:uid]).to eq(user.uid)
       expect(json[:user][:provider]).to eq('email')
@@ -49,14 +51,12 @@ describe 'POST api/v1/users/', type: :request do
 
       it 'does not create a user' do
         expect do
-          post user_registration_path, params: params, as: :json
+          subject
         end.not_to change { User.count }
       end
 
       it 'does not return a successful response' do
-        post user_registration_path, params: params, as: :json
-
-        expect(response.status).to eq(failed_response)
+        expect(subject.status).to eq(failed_response)
       end
     end
 
@@ -66,15 +66,11 @@ describe 'POST api/v1/users/', type: :request do
       let(:new_user)              { User.find_by(email: email) }
 
       it 'does not create a user' do
-        post user_registration_path, params: params, as: :json
-
         expect(new_user).to be_nil
       end
 
       it 'does not return a successful response' do
-        post user_registration_path, params: params, as: :json
-
-        expect(response.status).to eq(failed_response)
+        expect(subject.status).to eq(failed_response)
       end
     end
 
@@ -84,15 +80,11 @@ describe 'POST api/v1/users/', type: :request do
       let(:new_user)              { User.find_by(email: email) }
 
       it 'does not create a user' do
-        post user_registration_path, params: params, as: :json
-
         expect(new_user).to be_nil
       end
 
       it 'does not return a successful response' do
-        post user_registration_path, params: params, as: :json
-
-        expect(response.status).to eq(failed_response)
+        expect(subject.status).to eq(failed_response)
       end
     end
   end

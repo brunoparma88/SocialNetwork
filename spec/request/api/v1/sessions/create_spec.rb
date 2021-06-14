@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe 'POST api/v1/users/sign_in', type: :request do
+
+  subject do
+    post new_user_session_path, params: params, as: :json
+    response
+  end
+
   let(:password) { 'password' }
   let(:token) do
     {
@@ -11,22 +17,21 @@ describe 'POST api/v1/users/sign_in', type: :request do
       }
     }
   end
+
   let(:user) { create(:user, password: password, tokens: token) }
 
   context 'with correct params' do
-    before do
-      params = {
-        user:
-          {
-            email: user.email,
-            password: password
-          }
+    let(:params) do
+    {
+      user: {
+        email: user.email,
+        password: password
       }
-      post new_user_session_path, params: params, as: :json
+    }
     end
 
     it 'returns success' do
-        expect(response).to have_http_status(:success)
+        expect(subject).to have_http_status(:success)
     end
 
     it 'returns the user' do
@@ -37,23 +42,23 @@ describe 'POST api/v1/users/sign_in', type: :request do
     end
 
     it 'returns a valid client and access token' do
-      token = response.header['access-token']
-      client = response.header['client']
+      token = subject.header['access-token']
+      client = subject.header['client']
       expect(user.reload.valid_token?(token, client)).to be_truthy
     end
   end
 
   context 'with incorrect params' do
-    it 'return errors upon failure' do
-      params = {
-        user: {
-          email: user.email,
-          password: 'wrong_password!'
-        }
+    let(:params) do
+    {
+      user: {
+        email: user.email,
+        password: 'wrong_password!'
       }
-      post new_user_session_path, params: params, as: :json
-
-      expect(response).to be_unauthorized
+    }
+  end
+    it 'return errors upon failure' do
+      expect(subject).to be_unauthorized
       expected_response = {
         error: 'Invalid login credentials. Please try again.'
       }.with_indifferent_access

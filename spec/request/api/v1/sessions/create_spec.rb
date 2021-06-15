@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'POST api/v1/users/sign_in', type: :request do
-
   subject do
     post new_user_session_path, params: params, as: :json
     response
@@ -22,16 +23,16 @@ describe 'POST api/v1/users/sign_in', type: :request do
 
   context 'with correct params' do
     let(:params) do
-    {
-      user: {
-        email: user.email,
-        password: password
+      {
+        user: {
+          email: user.email,
+          password: password
+        }
       }
-    }
     end
 
     it 'returns success' do
-        expect(subject).to have_http_status(:success)
+      expect(subject).to have_http_status(:success)
     end
 
     it 'returns the user' do
@@ -50,13 +51,13 @@ describe 'POST api/v1/users/sign_in', type: :request do
 
   context 'with incorrect params' do
     let(:params) do
-    {
-      user: {
-        email: user.email,
-        password: 'wrong_password!'
+      {
+        user: {
+          email: user.email,
+          password: 'wrong_password!'
+        }
       }
-    }
-  end
+    end
     it 'return errors upon failure' do
       expect(subject).to be_unauthorized
       expected_response = {

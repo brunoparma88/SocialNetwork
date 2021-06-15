@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe 'POST api/v1/users/', type: :request do
-
   subject do
     post user_registration_path, params: params, as: :json
     response
@@ -12,7 +11,8 @@ describe 'POST api/v1/users/', type: :request do
   let(:user)            { User.last }
   let(:failed_response) { 422 }
 
-  context 'POST create' do
+  context 'with correct params' do
+
     let(:email)                 { 'test2@test.com' }
     let(:password)              { '12345678' }
     let(:password_confirmation) { '12345678' }

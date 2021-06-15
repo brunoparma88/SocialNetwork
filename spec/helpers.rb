@@ -5,7 +5,7 @@ module Helpers
   #
   # @return [Hash]
   def json
-    JSON.parse(response.body).with_indifferent_access
+    JSON.parse(subject.body).with_indifferent_access
   end
 
   def auth_headers

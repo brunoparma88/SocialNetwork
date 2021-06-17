@@ -11,8 +11,10 @@
 #  confirmed_at           :datetime
 #  email                  :string
 #  encrypted_password     :string           default(""), not null
+#  first_name             :string           default("")
 #  gender                 :integer
 #  image                  :string
+#  last_name              :string           default("")
 #  name                   :string
 #  nickname               :string
 #  provider               :string           default("email"), not null
@@ -37,18 +39,26 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :validatable
+         :recoverable, :rememberable, :validatable
+  devise :omniauthable, omniauth_providers: %i[facebook]
   include DeviseTokenAuth::Concerns::User
 
   enum gender: %i[male female]
   validates :uid, uniqueness: { scope: :provider }
-  validates :email, uniqueness: true, presence: true
+  validates :email, uniqueness: true, if: :uses_email?
   before_validation :init_uid
 
   private
 
   def uses_email?
     provider == 'email' || email.present?
+  end
+
+  def self.from_social_provider(provider, user_params)
+    where(provider: provider, uid: user_params['id']).first_or_create do |user|
+      user.password = Devise.friendly_token[0, 20]
+      user.assign_attributes user_params.except('id')
+    end
   end
 
   def init_uid

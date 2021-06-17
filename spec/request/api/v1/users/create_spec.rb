@@ -12,7 +12,6 @@ describe 'POST api/v1/users/', type: :request do
   let(:failed_response) { 422 }
 
   context 'with correct params' do
-
     let(:email)                 { 'test2@test.com' }
     let(:password)              { '12345678' }
     let(:password_confirmation) { '12345678' }

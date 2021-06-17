@@ -7,7 +7,7 @@ module Api
     end
 
     def resource_params
-      params.require(:user).permit(:email, :password,:gender, :confirm_password)
+      params.require(:user).permit(:email, :password,:first_name, :last_name,:gender, :confirm_password)
     end
   end
 end

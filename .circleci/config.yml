@@ -55,10 +55,6 @@ jobs:
       #- check_untracked_files:
       #    path: "db/schema.rb"
 
-      - run:
-          name: I18n Health
-          command: bundle exec i18n-tasks health
-
       # run code_analysis!
       - run:
           name: run code analysis

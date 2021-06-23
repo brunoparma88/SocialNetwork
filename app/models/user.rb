@@ -33,14 +33,14 @@
 #  index_users_on_uid_and_provider      (uid,provider) UNIQUE
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  enum gender: %i[male female]
+  enum gender: { male: 0, female: 1 }
   validates :uid, uniqueness: { scope: :provider }
   validates :email, uniqueness: true, presence: true
   before_validation :init_uid

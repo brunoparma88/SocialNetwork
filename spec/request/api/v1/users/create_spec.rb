@@ -30,9 +30,9 @@ describe 'POST api/v1/users/', type: :request do
     end
 
     it 'creates the user' do
-      expect do
+      expect {
         post user_registration_path, params: params, as: :json
-      end.to change(User, :count).by(1)
+      }.to change(User, :count).by(1)
     end
 
     it 'returns the user' do
@@ -48,9 +48,9 @@ describe 'POST api/v1/users/', type: :request do
       let(:email) { 'invalid_email' }
 
       it 'does not create a user' do
-        expect do
+        expect {
           post user_registration_path, params: params, as: :json
-        end.not_to change { User.count }
+        }.not_to change { User.count }
       end
 
       it 'does not return a successful response' do

@@ -6,21 +6,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.1'
 
 group :test do
-  gem 'shoulda', '~> 4.0'
-  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
-  gem 'rspec-support', '~> 3.10', '>= 3.10.2'
   gem 'capybara', '>= 3.26'
   gem 'faker', '~> 2.17'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'rspec-support', '~> 3.10', '>= 3.10.2'
+  gem 'shoulda', '~> 4.0'
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'webmock', '~> 3.7', '>= 3.7.6'
 end
 
 group :development, :test do
-  gem 'devise', '~> 4.8'
-  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'devise', '~> 4.8'
+  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
 end
 
@@ -28,6 +28,7 @@ group :development do
   gem 'annotate', '~> 3.1', '>= 3.1.1'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
+  gem 'rails_best_practices', '~> 1.20'
   gem 'rubocop-rails'
   gem 'rubocop-rootstrap', '~> 1.2'
   gem 'spring', '~> 2.1', '>= 2.1.1'

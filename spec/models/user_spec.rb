@@ -36,7 +36,6 @@
 require 'rails_helper'
 
 describe User do
-
   describe 'gender' do
     let(:male_user) { create(:user, :male) }
     let(:female_user) { create(:user, :female) }

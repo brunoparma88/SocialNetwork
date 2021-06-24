@@ -39,7 +39,7 @@ jobs:
           command: |
             gem install bundler
             bundle install --clean --jobs=4 --retry=3 --path vendor/bundle
-    
+
       - save_cache:
           paths:
             - vendor/bundle
@@ -69,14 +69,6 @@ jobs:
           name: run tests
           command: RAILS_ENV=test bundle exec rspec
 
-      # run codeclimate!
-      - run:
-          name: Setup Code Climate test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-            ./cc-test-reporter before-build
-            ./cc-test-reporter after-build
       - run:
           name: Check for missing annotations
           command: RAILS_ENV=test bundle exec annotate

@@ -37,7 +37,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :trackable, :validatable
+         :recoverable, :validatable
   include DeviseTokenAuth::Concerns::User
 
   enum gender: { male: 0, female: 1 }
@@ -47,11 +47,10 @@ class User < ApplicationRecord
 
   private
 
-  def uses_email?
-    provider == 'email' || email.present?
-  end
-
   def init_uid
     self.uid = email if uid.blank? && provider == 'email'
   end
+  # def uses_email?
+  #   provider == 'email' || email.present?
+  # end
 end

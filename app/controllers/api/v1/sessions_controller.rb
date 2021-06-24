@@ -13,7 +13,7 @@ module Api
       end
 
       def render_create_success
-        render :create
+        render json: { user: resource_data }
       end
     end
   end

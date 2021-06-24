@@ -104,6 +104,7 @@
       ],
       "/Users/brunoparma/Desktop/SocialNetowork/SocialNetwork/app/controllers/api/v1/registrations_controller.rb": [
         null,
+        null,
         1,
         1,
         1,
@@ -124,20 +125,9 @@
       ],
       "/Users/brunoparma/Desktop/SocialNetowork/SocialNetwork/app/controllers/application_controller.rb": [
         null,
-        1,
-        1,
         null,
         1,
         1,
-        1,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        0,
-        null,
         null
       ],
       "/Users/brunoparma/Desktop/SocialNetowork/SocialNetwork/app/controllers/api/concerns/act_as_api_request.rb": [
@@ -145,6 +135,7 @@
         null,
         1,
         1,
+        null,
         1,
         1,
         null,
@@ -161,8 +152,6 @@
         null,
         null,
         1,
-        null,
-        null,
         9,
         null,
         null,
@@ -171,16 +160,12 @@
         0,
         null,
         0,
-        null,
-        null,
-        1,
-        9,
         null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1624392029
+    "timestamp": 1624541712
   }
 }

@@ -12,7 +12,6 @@ describe 'POST api/v1/users/', type: :request do
   let(:failed_response) { 422 }
 
   context 'with correct params' do
-
     let(:email)                 { 'test2@test.com' }
     let(:password)              { '12345678' }
     let(:password_confirmation) { '12345678' }
@@ -34,9 +33,9 @@ describe 'POST api/v1/users/', type: :request do
     end
 
     it 'creates the user' do
-      expect do
+      expect {
         subject
-      end.to change(User, :count).by(1)
+      }.to change(User, :count).by(1)
     end
 
     it 'returns the user' do
@@ -50,9 +49,9 @@ describe 'POST api/v1/users/', type: :request do
       let(:email) { 'invalid_email' }
 
       it 'does not create a user' do
-        expect do
+        expect {
           subject
-        end.not_to change { User.count }
+        }.not_to change { User.count }
       end
 
       it 'does not return a successful response' do

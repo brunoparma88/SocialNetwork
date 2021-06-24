@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.0.1'
 
 group :test do
   gem 'capybara', '>= 3.26'
@@ -26,15 +26,17 @@ end
 
 group :development do
   gem 'annotate', '~> 3.1', '>= 3.1.1'
+  gem 'brakeman', '~> 5.0', '>= 5.0.1'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rubocop-rails'
+  gem 'rails_best_practices', '~> 1.20'
+  gem 'reek', '~> 5.5'
+  gem 'rubocop-rails', '~> 2.0', require: false
   gem 'rubocop-rootstrap', '~> 1.2'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
 end
 
-gem 'brakeman', '~> 5.0', '>= 5.0.1'
 gem 'nokogiri', '~> 1.11', '>= 1.11.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'

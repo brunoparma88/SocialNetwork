@@ -17,7 +17,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'byebug'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
   gem 'devise', '~> 4.8'
   gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
@@ -52,6 +52,8 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
+gem 'koala', '~> 2.4'
+gem 'omniauth-facebook', '~> 4.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

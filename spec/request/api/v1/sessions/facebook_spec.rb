@@ -26,6 +26,7 @@ describe 'POST api/v1/user/facebook', type: :request do
         access_token: '123456'
       }
     end
+
     before do
       stub_request(:get, facebook_api_path)
         .with(query: hash_including(access_token: '123456', fields: 'email,first_name,last_name'))
@@ -62,6 +63,7 @@ describe 'POST api/v1/user/facebook', type: :request do
         access_token: 'without_email'
       }
     end
+
     before do
       facebook_response[:email] = ''
       stub_request(:get, facebook_api_path)
@@ -107,6 +109,7 @@ describe 'POST api/v1/user/facebook', type: :request do
         access_token: 'invalid'
       }
     end
+
     before do
       facebook_response = {
         error: {
@@ -119,6 +122,7 @@ describe 'POST api/v1/user/facebook', type: :request do
         .with(query: hash_including(access_token: 'invalid', fields: 'email,first_name,last_name'))
         .to_return(status: 400, body: facebook_response.to_json)
     end
+
     it 'does not returns a successful response' do
       expect(subject).to_not have_http_status(:success)
     end
@@ -126,6 +130,7 @@ describe 'POST api/v1/user/facebook', type: :request do
     it 'does not create an user' do
       expect { subject }.to change(User, :count).by(0)
     end
+
     it 'shows the right error' do
       expect(json[:error]).to include 'Not Authorized'
     end

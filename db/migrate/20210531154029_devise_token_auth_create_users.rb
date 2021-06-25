@@ -36,6 +36,8 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.1]
       t.timestamps
 
       t.integer :gender
+      t.string :first_name, :string, default: ''
+      t.string :last_name, :string, default: ''
     end
 
     add_index :users, :email, unique: true

@@ -32,6 +32,10 @@ module Api
         response.headers.merge!(new_auth_header)
         render_create_success
       end
+
+      def json_request?
+        request.format.json?
+      end
     end
   end
 end

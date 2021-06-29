@@ -383,13 +383,9 @@ DEPENDENCIES
   factory_bot_rails (~> 5.1, >= 5.1.1)
   faker (~> 2.17)
   jbuilder (~> 2.7)
-<<<<<<< HEAD
   letter_opener (~> 1.7)
   listen (~> 3.5, >= 3.5.1)
-=======
   koala (~> 2.4)
-  listen (~> 3.3)
->>>>>>> develop
   nokogiri (~> 1.11, >= 1.11.6)
   omniauth-facebook (~> 4.0)
   pg (~> 1.1)

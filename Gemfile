@@ -27,6 +27,7 @@ end
 group :development do
   gem 'annotate', '~> 3.1', '>= 3.1.1'
   gem 'brakeman', '~> 5.0', '>= 5.0.1'
+  gem 'letter_opener', '~> 1.7'
   gem 'listen', '~> 3.5', '>= 3.5.1'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rails_best_practices', '~> 1.20'
@@ -35,7 +36,6 @@ group :development do
   gem 'rubocop-rootstrap', '~> 1.2'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
-  gem 'letter_opener', '~> 1.7'
 end
 
 gem 'sendgrid', '~> 1.2.4'

@@ -34,5 +34,5 @@ module Socialnetwork
     config.action_mailer.default_options = {
       from: 'no-reply@api.com'
     }
-      end
+  end
 end

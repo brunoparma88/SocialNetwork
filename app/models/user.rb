@@ -38,14 +38,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-<<<<<<< HEAD
-  devise :database_authenticatable, :registerable,:trackable,
-         :recoverable, :validatable, :confirmable
-=======
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   devise :omniauthable, omniauth_providers: %i[facebook]
->>>>>>> develop
   include DeviseTokenAuth::Concerns::User
 
   enum gender: { male: 0, female: 1 }

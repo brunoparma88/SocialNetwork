@@ -126,7 +126,7 @@ describe 'POST api/v1/user/facebook', type: :request do
     end
 
     it 'does not create an user' do
-      expect { subject }.noy_to change(User, :count)
+      expect { subject }.not_to change(User, :count)
     end
 
     it 'shows the right error' do

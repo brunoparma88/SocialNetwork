@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 describe 'POST api/v1/user/facebook', type: :request do
   let(:user)              {  create :user }
   let(:facebook_path)     { facebook_api_v1_user_path }
@@ -99,7 +97,7 @@ describe 'POST api/v1/user/facebook', type: :request do
     end
 
     it 'does not create an user' do
-      expect { subject }.to change(User, :count).by(0)
+      expect { subject }.not_to change(User, :count)
     end
   end
 
@@ -128,7 +126,7 @@ describe 'POST api/v1/user/facebook', type: :request do
     end
 
     it 'does not create an user' do
-      expect { subject }.to change(User, :count).by(0)
+      expect { subject }.noy_to change(User, :count)
     end
 
     it 'shows the right error' do

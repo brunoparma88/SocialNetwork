@@ -8,7 +8,7 @@ module Api
 
       def facebook
         user_params = FacebookService.new(params[:access_token]).profile
-        @resource = User.from_social_provider 'facebook', user_params
+        @resource = User.from_social_provider('facebook', user_params)
         custom_sign_in
       rescue Koala::Facebook::AuthenticationError
         render json: { error: 'Not Authorized' }, status: :forbidden

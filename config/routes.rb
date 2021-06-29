@@ -6,4 +6,16 @@ Rails.application.routes.draw do
     registrations: 'api/v1/registrations',
     sessions: 'api/v1/sessions'
   }
+
+  namespace :api do
+    namespace :v1, defaults: { format: :json } do
+      devise_scope :user do
+        resource :user, only: [] do
+          controller :sessions do
+            post :facebook, on: :collection
+          end
+        end
+      end
+    end
+  end
 end

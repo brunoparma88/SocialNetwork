@@ -19,7 +19,8 @@ describe 'POST api/v1/users/sign_in', type: :request do
     }
   end
 
-  let(:user) { create(:user, password: password, tokens: token) }
+  let(:user) { create(:user, :confirmed, password: password, tokens: token) }
+  let(:user_not_confirmed) { create(:user, password: password, tokens: token) }
 
   context 'with correct params' do
     let(:params) do
@@ -46,6 +47,21 @@ describe 'POST api/v1/users/sign_in', type: :request do
       token = subject.header['access-token']
       client = subject.header['client']
       expect(user.reload.valid_token?(token, client)).to be_truthy
+    end
+  end
+
+  context 'with correct params but their account is not confirmed' do
+    let(:params) do
+      {
+        user: {
+          email: user_not_confirmed.email,
+          password: password
+        }
+      }
+    end
+
+    it 'return errors unauthorized' do
+      expect(subject).to have_http_status(:unauthorized)
     end
   end
 

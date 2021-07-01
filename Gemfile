@@ -22,6 +22,7 @@ group :development, :test do
   gem 'devise', '~> 4.8'
   gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
+  gem 'dotenv-rails', '~> 2.7.6'
 end
 
 group :development do
@@ -57,7 +58,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'koala', '~> 2.4'
 gem 'omniauth-facebook', '~> 4.0'
-gem 'dotenv-rails', '~> 2.7.6'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

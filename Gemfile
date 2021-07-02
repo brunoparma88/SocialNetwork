@@ -32,7 +32,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rails_best_practices', '~> 1.20'
   gem 'reek', '~> 5.5'
-  gem 'rubocop-rails', '~> 2.0', require: false
+  gem 'rubocop-rails', '~> 2.11', '>= 2.11.2', require: false
   gem 'rubocop-rootstrap', '~> 1.2'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'

@@ -5,7 +5,6 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Dotenv::Railtie.load
 
 module Socialnetwork
   class Application < Rails::Application
@@ -25,12 +24,14 @@ module Socialnetwork
       authentication: :plain,
       domain: 'www.api.com',
       enable_starttls_auto: true,
-      password: ENV['SENDGRID_API_KEY'],
+      password: Rails.application.credentials.sendgrid[:api_key],
       port: 587,
-      user_name: ENV['SENDGRID_USERNAME']
+      user_name: Rails.application.credentials.sendgrid[:username]
     }
-    config.action_mailer.default_url_options = { host: ENV['SERVER_URL'],
-                                                 port: ENV['SERVER_PORT'] }
+    config.action_mailer.default_url_options = {
+      host: Rails.application.credentials.sendgrid[:server_url],
+      port: Rails.application.credentials.sendgrid[:server_port]
+    }
     config.action_mailer.default_options = {
       from: 'no-reply@api.com'
     }

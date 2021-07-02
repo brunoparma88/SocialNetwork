@@ -45,6 +45,9 @@ jobs:
             - vendor/bundle
           key: v1-bundle-dependencies-{{ checksum "Gemfile.lock" }}
 
+      # copy keys
+      - run: cp .circleci/test.key config/credentials/test.key
+      
       # Database setup
       - run: cp .circleci/database.yml config/database.yml
       - run: RAILS_ENV=test bundle exec rake db:create
@@ -53,8 +56,6 @@ jobs:
       #- check_untracked_files:
       #    path: "db/schema.rb"
 
-      # copy keys
-      - run: cp .circleci/test.key config/credentials/test.key
 
       # run code_analysis!
       - run:

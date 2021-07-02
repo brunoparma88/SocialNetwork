@@ -45,6 +45,9 @@ jobs:
             - vendor/bundle
           key: v1-bundle-dependencies-{{ checksum "Gemfile.lock" }}
 
+       Database setup
+      - run: cp .circleci/test.key config/test.key
+
       # Database setup
       - run: cp .circleci/database.yml config/database.yml
       - run: RAILS_ENV=test bundle exec rake db:create

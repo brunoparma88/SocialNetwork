@@ -14,6 +14,8 @@ FactoryBot.reload
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
+FileUtils.rm_rf('./spec/tmp/storage')
+
 RSpec.configure do |config|
   config.include Helpers
   config.expect_with :rspec do |expectations|

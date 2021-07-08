@@ -31,6 +31,7 @@ describe 'GET api/v1/topics', type: :request do
 
   it 'assigns the specified filename' do
     topic.avatar.attach(file)
+    topic.save!
     expect(topic.avatar.attached?).to be
   end
 end

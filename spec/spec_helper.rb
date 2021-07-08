@@ -18,6 +18,7 @@ FileUtils.rm_rf('./spec/tmp/storage')
 
 RSpec.configure do |config|
   config.include Helpers
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -31,6 +32,7 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
   config.include FactoryBot::Syntax::Methods
 
   config.before :each do

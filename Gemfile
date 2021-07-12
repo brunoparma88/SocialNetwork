@@ -27,15 +27,18 @@ end
 group :development do
   gem 'annotate', '~> 3.1', '>= 3.1.1'
   gem 'brakeman', '~> 5.0', '>= 5.0.1'
-  gem 'listen', '~> 3.3'
+  gem 'letter_opener', '~> 1.7'
+  gem 'listen', '~> 3.5', '>= 3.5.1'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'rails_best_practices', '~> 1.20'
   gem 'reek', '~> 5.5'
-  gem 'rubocop-rails', '~> 2.0', require: false
-  gem 'rubocop-rootstrap', '~> 1.2'
+  gem 'rubocop-rails', '~> 2.5', require: false
+  gem 'rubocop-rootstrap', '~> 1.1'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
 end
+
+gem 'sendgrid', '~> 1.2.4'
 
 gem 'nokogiri', '~> 1.11', '>= 1.11.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

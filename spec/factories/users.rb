@@ -47,5 +47,11 @@ FactoryBot.define do
     trait :male do
       gender { :male }
     end
+
+    trait :confirmed do
+      confirmed_at { Time.zone.now }
+      confirmation_sent_at { Time.zone.now }
+      confirmation_token { '12345' }
+    end
   end
 end

@@ -11,4 +11,17 @@ FactoryBot.define do
   factory :topic do
     name { Faker::Movie.title }
   end
+
+  trait :with_avatar do
+    after :create do |topic|
+      file = {
+        io: File.open(
+          File.expand_path(File.join(File.dirname(__FILE__) + '/..', 'fixtures',
+                                     'generic-logo.png'))
+        ),
+        filename: 'generic-logo.png'
+      }
+      topic.avatar.attach(file)
+    end
+  end
 end

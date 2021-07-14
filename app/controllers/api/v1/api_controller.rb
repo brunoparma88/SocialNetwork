@@ -19,7 +19,7 @@ module Api
       end
 
       def render_not_found(exception)
-        logger.info(exception) # for logging
+        logger.info  { exception } # for logging
         render json: { error: "Couldn't find the record" }, status: :not_found
       end
 

@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_07_08_120050) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string "name", null: false, index: true
+    t.string "name", null: false, index: true, unique: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

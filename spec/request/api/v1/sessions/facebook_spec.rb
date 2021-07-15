@@ -83,7 +83,7 @@ describe 'POST api/v1/user/facebook', type: :request do
     end
 
     before do
-      create :user, email: 'test@facebook.com', provider: 'facebook', uid: '123456789'
+      create :user, :confirmed, email: 'test@facebook.com', provider: 'facebook', uid: '123456789'
     end
 
     before do

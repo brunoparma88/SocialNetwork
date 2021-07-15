@@ -14,8 +14,11 @@ FactoryBot.reload
 
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |file| require file }
 
+FileUtils.rm_rf('./spec/tmp/storage')
+
 RSpec.configure do |config|
   config.include Helpers
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -29,11 +32,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
-  config.include FactoryBot::Syntax::Methods
 
-  config.before :suite do
-    FactoryBot.lint unless config.files_to_run.one?
-  end
+  config.include FactoryBot::Syntax::Methods
 
   config.before :each do
     DatabaseCleaner.strategy = :transaction

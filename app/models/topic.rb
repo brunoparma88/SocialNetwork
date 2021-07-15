@@ -14,5 +14,4 @@
 class Topic < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   has_one_base64_attached :avatar
-  scope :get_all, -> { limit(50) }
 end

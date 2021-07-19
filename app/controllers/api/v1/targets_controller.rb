@@ -1,4 +1,3 @@
-
 module Api
   module V1
     class TargetsController < Api::V1::ApiController
@@ -8,22 +7,10 @@ module Api
         @target = current_user.targets.create! targets_params
       end
 
-      def index
-        @targets = current_user.targets.page params[:page]
-      end
-
-      def destroy
-        target.destroy!
-      end
-
       private
 
-      def target
-        @target ||= current_user.targets.find params[:id]
-      end
-
       def target_attrs
-        %i( title latitude longitude radius topic_id )
+        %i[title latitude longitude radius topic_id]
       end
 
       def targets_params

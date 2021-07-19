@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'POST api/v1/targets/', type: :request do
-
   subject do
     post api_v1_targets_path, params: params, headers: auth_headers, as: :json
     response
@@ -12,7 +11,6 @@ describe 'POST api/v1/targets/', type: :request do
   let(:target_created) { Target.last }
 
   context 'with valid params' do
-
     let(:params) do
       {
         target: {
@@ -37,11 +35,10 @@ describe 'POST api/v1/targets/', type: :request do
   end
 
   context 'with invalid params' do
-
     let(:params) do
       {
         target: {
-          topic_id: nil,
+          topic_id: nil
         }
       }
     end

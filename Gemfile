@@ -59,6 +59,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'koala', '~> 2.4'
 gem 'omniauth-facebook', '~> 4.0'
 gem 'rack-cors', '~> 0.4.0'
+gem 'arctic_admin', '~> 3.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

@@ -8,7 +8,6 @@ describe 'POST api/v1/targets/', type: :request do
 
   let(:user)           { create :user }
   let(:topic)          { create :topic }
-  let(:target_created) { Target.last }
 
   context 'with valid params' do
     let(:params) do

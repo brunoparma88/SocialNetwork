@@ -8,7 +8,6 @@ describe Target do
 
   describe 'Validations' do
     subject { build :target, user: create(:user) }
-
     it { should validate_presence_of(:topic) }
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:latitude) }

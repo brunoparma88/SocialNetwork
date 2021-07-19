@@ -44,6 +44,7 @@ class User < ApplicationRecord
   include DeviseTokenAuth::Concerns::User
 
   enum gender: { male: 0, female: 1 }
+  has_many :targets, dependent: :destroy
   validates :uid, uniqueness: { scope: :provider }
   validates :email, uniqueness: true, if: :uses_email?
   before_validation :init_uid

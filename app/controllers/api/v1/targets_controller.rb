@@ -1,10 +1,8 @@
 module Api
   module V1
     class TargetsController < Api::V1::ApiController
-      helper_method :target
-
       def create
-        @target = current_user.targets.create! targets_params
+        @target = current_user.targets.create!(targets_params)
       end
 
       private

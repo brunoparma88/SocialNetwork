@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 describe 'POST api/v1/targets/', type: :request do
-  subject do
-    post api_v1_targets_path, params: params, headers: auth_headers, as: :json
-    response
-  end
-
-  let(:user)           { create :user }
-  let(:topic)          { create :topic }
+  let(:user) { create :user }
+  let(:topic) { create :topic }
 
   context 'with valid params' do
+    subject do
+      post api_v1_targets_path, params: params, headers: auth_headers, as: :json
+      response
+    end
+
     let(:params) do
       {
         target: {
@@ -34,6 +34,11 @@ describe 'POST api/v1/targets/', type: :request do
   end
 
   context 'with invalid params' do
+    subject do
+      post api_v1_targets_path, params: params, headers: auth_headers, as: :json
+      response
+    end
+
     let(:params) do
       {
         target: {
@@ -50,6 +55,17 @@ describe 'POST api/v1/targets/', type: :request do
       expect {
         subject
       }.not_to change { Target.count }
+    end
+  end
+
+  context 'with no user logged in' do
+    subject do
+      post api_v1_targets_path, params: {}, as: :json
+      response
+    end
+
+    it 'returns the missing params error' do
+      expect(subject).to have_http_status(:unauthorized)
     end
   end
 end

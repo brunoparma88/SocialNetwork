@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe Api::V1::TargetsController, type: :routing do
   describe 'routing' do
     it 'routes to #create' do

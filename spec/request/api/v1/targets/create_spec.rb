@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe 'POST api/v1/targets/', type: :request do
-  let(:user) { create :user }
-  let(:topic) { create :topic }
+  let(:user) { create(:user) }
+  let(:topic) { create(:topic) }
+  let(:target) { Target.last }
 
   context 'with valid params' do
     subject do
@@ -24,6 +25,14 @@ describe 'POST api/v1/targets/', type: :request do
 
     it 'returns success' do
       expect(subject).to have_http_status(:success)
+    end
+
+    it 'returns the target' do
+      expect(json[:target][:title]).to eq(target.title)
+      expect(json[:target][:topic_id]).to eq(target.topic_id)
+      expect(json[:target][:longitude]).to eq(target.longitude)
+      expect(json[:target][:latitude]).to eq(target.latitude)
+      expect(json[:target][:radius]).to eq(target.radius)
     end
 
     it 'creates the target' do
@@ -64,8 +73,14 @@ describe 'POST api/v1/targets/', type: :request do
       response
     end
 
-    it 'returns the missing params error' do
+    it 'returns unauthorized' do
       expect(subject).to have_http_status(:unauthorized)
+    end
+
+    it 'does not create a target' do
+      expect {
+        subject
+      }.not_to change { Target.count }
     end
   end
 end

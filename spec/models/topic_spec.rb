@@ -21,11 +21,15 @@ describe Topic do
     end
   end
 
+  describe 'Associations' do
+    it { is_expected.to have_many(:targets).dependent(:destroy) }
+  end
+
   describe 'validations' do
     context 'when was created with regular login' do
       subject { build(:topic, :with_avatar) }
-      it { should validate_presence_of(:name) }
-      it { should validate_uniqueness_of(:name) }
+      it { is_expected.to validate_presence_of(:name) }
+      it { is_expected.to validate_uniqueness_of(:name) }
     end
   end
 end

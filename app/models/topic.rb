@@ -13,5 +13,6 @@
 #
 class Topic < ApplicationRecord
   validates :name, presence: true, uniqueness: true
+  has_many :targets, dependent: :destroy
   has_one_base64_attached :avatar
 end

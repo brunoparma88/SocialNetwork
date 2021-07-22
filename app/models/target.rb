@@ -27,6 +27,6 @@ class Target < ApplicationRecord
   private
 
   def mount_of_targets
-    errors.add(I18n.t 'error.target_limit') if user.targets.count > 10
+    errors.add(I18n.t('error.target_limit')) if user.targets.count > 10
   end
 end

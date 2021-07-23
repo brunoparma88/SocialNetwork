@@ -9,17 +9,16 @@ describe 'PUT api/v1/user', type: :request do
   end
 
   context 'with valid params' do
-
-     let(:params) do
-        {
-          user: {
-            uid: user.uid,
-            first_name: 'FirstNameModify',
-            last_name: 'LastNameModify',
-            gender: 'male'
-          }
+    let(:params) do
+      {
+        user: {
+          uid: user.uid,
+          first_name: 'FirstNameModify',
+          last_name: 'LastNameModify',
+          gender: 'male'
         }
-      end
+      }
+    end
 
     it 'returns success' do
       expect(subject).to have_http_status(:success)

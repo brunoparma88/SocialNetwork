@@ -36,12 +36,12 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.before :each do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.start
+    # DatabaseCleaner.strategy = :transaction
+    # DatabaseCleaner.start
     ActionMailer::Base.deliveries.clear
   end
 
-  config.after do
-    DatabaseCleaner.clean
-  end
+  # config.after do
+  #   DatabaseCleaner.clean
+  # end
 end

@@ -32,15 +32,26 @@ describe 'PUT api/v1/user', type: :request do
     end
   end
 
-  context 'with invalid data' do
-    let(:params) { { user: { email: 'notanemail' } } }
+  context 'with invalid params' do
+    let(:params) { { user: { email: 'emailFail' } } }
 
-    it 'does not return success' do
-      expect(subject).to_not have_http_status(:success)
+    it 'returns bad request' do
+      expect(subject).to have_http_status(:bad_request)
     end
 
     it 'returns the error' do
       expect(json[:errors][:email]).to include('is not an email')
+    end
+  end
+
+  context 'with no user logged in' do
+    subject do
+      post api_v1_targets_path, params: {}, as: :json
+      response
+    end
+
+    it 'returns unauthorized' do
+      expect(subject).to have_http_status(:unauthorized)
     end
   end
 end

@@ -22,4 +22,11 @@ class Target < ApplicationRecord
   belongs_to :topic
 
   validates :longitude, :latitude, :radius, :title, :user, :topic, presence: true
+  validate :mount_of_targets, on: :create
+
+  private
+
+  def mount_of_targets
+    errors.add(I18n.t('error.target_limit')) if user.targets.count > User::TARGET_LIMIT
+  end
 end

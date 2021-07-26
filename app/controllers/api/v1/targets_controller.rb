@@ -14,7 +14,7 @@ module Api
       private
 
       def target
-        @target ||= current_user.targets.find params[:id]
+        @target ||= current_user.targets.find(params[:id])
       end
 
       def target_attrs

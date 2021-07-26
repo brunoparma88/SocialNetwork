@@ -26,8 +26,8 @@ describe 'DELETE api/v1/targets/:id', type: :request do
         response
       end
 
-      it 'does not return a successful response' do
-        expect(subject).not_to have_http_status(:success)
+      it 'returns not found' do
+        expect(subject).to have_http_status(:not_found)
       end
 
       it 'does not delete the target' do

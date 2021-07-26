@@ -60,6 +60,19 @@ ActiveRecord::Schema.define(version: 2021_10_08_120050) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "targets", force: :cascade do |t|
+    t.string "title", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
+    t.float "radius", null: false
+    t.bigint "topic_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["topic_id"], name: "index_targets_on_topic_id"
+    t.index ["user_id"], name: "index_targets_on_user_id"
+  end
+
   create_table "topics", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false

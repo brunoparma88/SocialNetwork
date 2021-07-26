@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         get :status, to: 'api#status'
         resources :targets, only: :create
         resources :topics, only: :index
-        resource :user, only: [] do
+        resource :user, only: %i[update show] do
           controller :sessions do
             post :facebook, on: :collection
           end

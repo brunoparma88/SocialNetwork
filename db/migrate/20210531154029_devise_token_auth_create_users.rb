@@ -32,9 +32,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.1]
 
       ## Tokens
       t.json :tokens
-
       t.timestamps
-
       t.integer :gender
     end
 

@@ -2,6 +2,7 @@
 
 module Api
   module Concerns
+    # Api request
     module ActAsApiRequest
       extend ActiveSupport::Concern
 
@@ -12,14 +13,12 @@ module Api
       end
 
       def check_json_request
-        return if request_content_type&.match?(/json/)
+        return if request.content_type.match?(/json/)
 
         render json: { error: I18n.t('api.errors.invalid_content_type') }, status: :not_acceptable
       end
 
       def skip_session_storage
-        # Devise stores the cookie by default, so in api requests, it is disabled
-        # http://stackoverflow.com/a/12205114/2394842
         request.session_options[:skip] = true
       end
 
@@ -28,10 +27,6 @@ module Api
           error: message
         }
         render json: response, status: status
-      end
-
-      def request_content_type
-        request.content_type
       end
     end
   end

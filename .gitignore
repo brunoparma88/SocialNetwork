@@ -4,6 +4,7 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+/coverage/*
 /config/database.yml
 *.rbc
 *.swp
@@ -54,3 +55,7 @@ config/application.yml
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+/config/credentials/test.key
+
+/config/credentials/development.key

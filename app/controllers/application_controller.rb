@@ -1,16 +1,18 @@
 # frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  include Pundit
   include DeviseTokenAuth::Concerns::SetUserByToken
 
-  protect_from_forgery with: :null_session
-  helper_method :current_user
-  helper_method :logged_in?
+  after_action :verify_authorized,
+               except: :index,
+               unless: -> { :devise_controller? || :active_admin_controller? }
+  after_action :verify_policy_scoped,
+               only: :index,
+               unless: -> { :devise_controller? || :active_admin_controller? }
 
-  def current_user
-    User.find_by(id: session[:user_id])
-  end
-
-  def logged_in?
-    current_user.present?
+  def active_admin_controller?
+    is_a?(ActiveAdmin::BaseController)
   end
 end

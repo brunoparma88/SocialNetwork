@@ -3,38 +3,43 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.0.1'
 
 group :test do
-  gem 'shoulda', '~> 4.0'
-  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
-  gem 'rspec-support', '~> 3.10', '>= 3.10.2'
   gem 'capybara', '>= 3.26'
   gem 'faker', '~> 2.17'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.1'
+  gem 'rspec-support', '~> 3.10', '>= 3.10.2'
+  gem 'shoulda', '~> 4.0'
   gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'simplecov', '~> 0.13.0', require: false
   gem 'webmock', '~> 3.7', '>= 3.7.6'
 end
 
 group :development, :test do
-  gem 'devise', '~> 4.8'
-  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner', '~> 2.0', '>= 2.0.1'
+  gem 'devise', '~> 4.8'
+  gem 'devise_token_auth', '~> 1.1', '>= 1.1.5'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
 end
 
 group :development do
   gem 'annotate', '~> 3.1', '>= 3.1.1'
-  gem 'listen', '~> 3.3'
+  gem 'brakeman', '~> 5.0', '>= 5.0.1'
+  gem 'letter_opener', '~> 1.7'
+  gem 'listen', '~> 3.5', '>= 3.5.1'
   gem 'rack-mini-profiler', '~> 2.0'
-  gem 'rubocop-rails'
-  gem 'rubocop-rootstrap', '~> 1.2'
+  gem 'rails_best_practices', '~> 1.20'
+  gem 'reek', '~> 5.5'
+  gem 'rubocop-rails', '~> 2.5', require: false
+  gem 'rubocop-rootstrap', '~> 1.1'
   gem 'spring', '~> 2.1', '>= 2.1.1'
   gem 'web-console', '>= 4.1.0'
 end
 
-gem 'brakeman', '~> 5.0', '>= 5.0.1'
+gem 'sendgrid', '~> 1.2.4'
+
 gem 'nokogiri', '~> 1.11', '>= 1.11.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
@@ -49,7 +54,13 @@ gem 'webpacker', '~> 5.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.crailrom/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'activeadmin', '~> 2.8'
+gem 'active_storage_base64', '~> 1.2.0'
 gem 'jbuilder', '~> 2.7'
+gem 'koala', '~> 2.4'
+gem 'omniauth-facebook', '~> 4.0'
+gem 'pundit', '~> 2.1'
+gem 'rack-cors', '~> 0.4.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

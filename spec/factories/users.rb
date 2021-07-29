@@ -5,25 +5,27 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  provider               :string           default("email"), not null
+#  uid                    :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
 #  allow_password_change  :boolean          default(FALSE)
-#  confirmation_sent_at   :datetime
+#  remember_created_at    :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
-#  email                  :string
-#  encrypted_password     :string           default(""), not null
-#  gender                 :integer
-#  image                  :string
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
 #  name                   :string
 #  nickname               :string
-#  provider               :string           default("email"), not null
-#  remember_created_at    :datetime
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string
+#  image                  :string
+#  email                  :string
 #  tokens                 :json
-#  uid                    :string           default(""), not null
-#  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  gender                 :integer
+#  first_name             :string           default("")
+#  last_name              :string           default("")
 #
 # Indexes
 #
@@ -44,6 +46,12 @@ FactoryBot.define do
 
     trait :male do
       gender { :male }
+    end
+
+    trait :confirmed do
+      confirmed_at { Time.zone.now }
+      confirmation_sent_at { Time.zone.now }
+      confirmation_token { '12345' }
     end
   end
 end
